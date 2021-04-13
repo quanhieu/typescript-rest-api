@@ -1,20 +1,24 @@
 import logger from '../utils/logger'
 
-import { apiResponse } from '../interfaces/api'
+import { apiResponse, IRequestData } from '../interfaces/api'
 import { ISearchUserResult } from '../interfaces/users'
 
 import { createUser, searchUser } from '../services/users'
+import { FastifyReply } from 'fastify'
 
-async function signUpCtrl(req: any, res: any): Promise<apiResponse> {
+async function signUpCtrl(
+  req: IRequestData,
+  res: FastifyReply,
+): Promise<apiResponse> {
   try {
     const { body } = req
     let u = await createUser(body)
     await u.setLastUpdated()
     u = await u.setFirstName('Dong Ngu hoc')
-    return {
+    res.send({
       status: true,
       data: u,
-    }
+    })
   } catch (err) {
     res.code(500)
     return {
@@ -24,7 +28,10 @@ async function signUpCtrl(req: any, res: any): Promise<apiResponse> {
   }
 }
 
-async function searchUserCtrl(req: any, res: any): Promise<apiResponse> {
+async function searchUserCtrl(
+  req: IRequestData,
+  res: FastifyReply,
+): Promise<apiResponse> {
   try {
     const { page, size, keyword } = req.body
     logger.info(req.body)

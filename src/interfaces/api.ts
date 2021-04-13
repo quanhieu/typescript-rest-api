@@ -1,14 +1,25 @@
-export interface api200Response {
+import { FastifyRequest } from 'fastify'
+
+interface api200Response {
   status: boolean
   data: unknown
 }
-export interface api400Response {
+interface api400Response {
   status: boolean
   message: string
 }
 
-export interface apiResponse {
+interface apiResponse {
   status?: boolean
   message?: string
   data?: any
 }
+
+interface IRequestData extends FastifyRequest<IRequestData> {
+  QueryStrings: any
+  Params: any
+  Body: any
+  Headers: any
+}
+
+export { IRequestData, apiResponse, api200Response, api400Response }
