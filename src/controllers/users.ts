@@ -12,7 +12,7 @@ async function signUpCtrl(req: any, res: any): Promise<apiResponse> {
       data: u,
     }
   } catch (err) {
-    logger.error(err)
+    console.log(err)
     res.code(500)
     return {
       status: false,

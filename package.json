@@ -27,6 +27,7 @@
     "@types/mongoose": "^5.10.4",
     "ajv": "^7.0.4",
     "ajv-formats": "^1.5.1",
+    "ajv-keywords": "^5.0.0",
     "dotenv": "^8.2.0",
     "fastify": "^3.11.0",
     "fastify-autoload": "^3.4.2",

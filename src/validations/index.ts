@@ -1,6 +1,7 @@
 import Ajv from 'ajv'
 import logger from '../utils/logger'
 import addFormats from 'ajv-formats'
+import addKeywords from 'ajv-keywords'
 
 const ajv = new Ajv({
   logger: {
@@ -12,5 +13,6 @@ const ajv = new Ajv({
 })
 
 addFormats(ajv)
+addKeywords(ajv)
 
 export default ajv

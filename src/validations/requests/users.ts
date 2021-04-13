@@ -6,6 +6,7 @@ const userSignUpSchema = {
         type: 'string',
         format: 'email',
         minLength: 1,
+        transform: ['trim', 'toLowerCase'],
       },
       password: {
         type: 'string',
