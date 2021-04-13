@@ -1,6 +1,6 @@
 import { IUserDocument, IUserModel } from './users.types'
 
-export async function findOneOrCreate(
+async function findOneOrCreate(
   this: IUserModel,
   {
     firstName,
@@ -16,10 +16,12 @@ export async function findOneOrCreate(
   }
 }
 
-export async function findByAge(
+async function findByAge(
   this: IUserModel,
   min?: number,
   max?: number,
 ): Promise<IUserDocument[]> {
   return this.find({ age: { $gte: min || 0, $lte: max || Infinity } })
 }
+
+export { findOneOrCreate, findByAge }

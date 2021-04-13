@@ -1,4 +1,5 @@
 import * as Mongoose from 'mongoose'
+
 import UserSchema from './users.schema'
 import { IUserDocument } from './users.types'
 

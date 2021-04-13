@@ -1,7 +1,9 @@
+import logger from '../utils/logger'
+
 import { apiResponse } from '../interfaces/api'
 import { ISearchUserResult } from '../interfaces/users'
+
 import { createUser, searchUser } from '../services/users'
-import logger from '../utils/logger'
 
 async function signUpCtrl(req: any, res: any): Promise<apiResponse> {
   try {

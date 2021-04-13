@@ -1,5 +1,4 @@
 import mongoose from 'mongoose'
-import { RequestParams } from '@elastic/elasticsearch'
 
 import models from '../models'
 import {
@@ -61,4 +60,5 @@ async function searchUser(inp: ISearchUser): Promise<ISearchUserResult> {
   }
   return result
 }
+
 export { createUser, searchUser }

@@ -1,4 +1,5 @@
 import * as Mongoose from 'mongoose'
+
 import { findOneOrCreate, findByAge } from './users.statics'
 import { setLastUpdated, sameLastName, setFirstName } from './users.methods'
 

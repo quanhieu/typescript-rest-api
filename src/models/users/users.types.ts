@@ -1,20 +1,14 @@
 import { Document, Model } from 'mongoose'
 
-export interface IUser {
-  firstName: string
-  lastName: string
-  age: number
-  dateOfEntry?: Date
-  lastUpdated?: Date
-}
+import { IUser } from '../../interfaces/users'
 
-export interface IUserDocument extends IUser, Document {
+interface IUserDocument extends IUser, Document {
   setLastUpdated: () => Promise<void>
   sameLastName: () => Promise<Document[]>
   setFirstName: (firstName: string) => Promise<IUserDocument>
 }
 
-export interface IUserModel extends Model<IUserDocument> {
+interface IUserModel extends Model<IUserDocument> {
   findOneOrCreate: (
     this: IUserModel,
     {
@@ -29,3 +23,5 @@ export interface IUserModel extends Model<IUserDocument> {
     max?: number,
   ) => Promise<IUserDocument[]>
 }
+
+export { IUserDocument, IUserModel }
