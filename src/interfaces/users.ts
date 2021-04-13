@@ -1,8 +1,17 @@
+import { IRequestData } from './api'
+
 export interface ICreateUser {
   email: string
   password: string
   firstName?: string
   lastName?: string
+}
+
+export interface ICreateUserRequestData extends IRequestData {
+  body: {
+    email: string
+    password: string
+  }
 }
 
 export interface IUserToken {
