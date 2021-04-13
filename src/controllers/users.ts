@@ -7,16 +7,9 @@ async function signUpCtrl(req: any, res: any): Promise<apiResponse> {
   try {
     const { body } = req
     const u = await createUser(body)
-    const [token] = await Promise.all([
-      u.login('abxadsasds'),
-      u.indexToElaticsearch(),
-    ])
     return {
       status: true,
-      data: {
-        token,
-        user: u.toJSON(),
-      },
+      data: u,
     }
   } catch (err) {
     logger.error(err)

@@ -12,8 +12,11 @@ export interface IUserToken {
 
 export interface IUser {
   email: string
-  firstName?: string
-  lastName?: string
+  firstName: string
+  lastName: string
+  age: number
+  dateOfEntry?: Date
+  lastUpdated?: Date
 }
 
 export interface ISearchUser {

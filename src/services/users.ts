@@ -10,9 +10,9 @@ import {
 } from '../interfaces/users'
 import es7 from '../infra/elasticsearch'
 import { SearchResponse } from '../interfaces/elasticsearch'
-import { IUserModel } from '../models/users'
+import { IUserDocument } from '../models/users/users.types'
 
-async function createUser(inp: ICreateUser): Promise<IUserModel> {
+async function createUser(inp: ICreateUser): Promise<IUserDocument> {
   const u = new models.users({
     _id: new mongoose.Types.ObjectId(),
     email: inp.email,
