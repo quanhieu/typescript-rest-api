@@ -1,8 +1,9 @@
 import fastify from 'fastify'
-import logger from './utils/logger'
 import autoload from 'fastify-autoload'
 import path from 'path'
+
 import ajv from './validations'
+import logger from './utils/logger'
 import config from './config'
 import constant from './utils/constant'
 

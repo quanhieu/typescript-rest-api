@@ -6,13 +6,14 @@ import logger from '../utils/logger'
 async function signUpCtrl(req: any, res: any): Promise<apiResponse> {
   try {
     const { body } = req
-    const u = await createUser(body)
+    let u = await createUser(body)
+    await u.setLastUpdated()
+    u = await u.setFirstName('Dong Ngu hoc')
     return {
       status: true,
       data: u,
     }
   } catch (err) {
-    console.log(err)
     res.code(500)
     return {
       status: false,

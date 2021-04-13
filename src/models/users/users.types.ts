@@ -9,8 +9,9 @@ export interface IUser {
 }
 
 export interface IUserDocument extends IUser, Document {
-  setLastUpdated: (this: IUserDocument) => Promise<void>
-  sameLastName: (this: IUserDocument) => Promise<Document[]>
+  setLastUpdated: () => Promise<void>
+  sameLastName: () => Promise<Document[]>
+  setFirstName: (firstName: string) => Promise<IUserDocument>
 }
 
 export interface IUserModel extends Model<IUserDocument> {
