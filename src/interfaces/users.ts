@@ -1,5 +1,4 @@
 import { IRequestData } from './api'
-
 export interface ICreateUser {
   email: string
   password: string

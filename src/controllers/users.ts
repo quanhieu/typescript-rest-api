@@ -16,10 +16,10 @@ async function signUpCtrl(
     let u: IUserDocument = await createUser(body)
     await u.setLastUpdated()
     u = await u.setFirstName('Dong Ngu hoc')
-    res.send({
+    return {
       status: true,
       data: u,
-    })
+    }
   } catch (err) {
     res.code(500)
     return {

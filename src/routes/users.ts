@@ -1,9 +1,6 @@
 import { FastifyInstance } from 'fastify'
 import { signUpCtrl, searchUserCtrl } from '../controllers/users'
-import {
-  searchUserSchema,
-  userSignUpSchema,
-} from '../validations/requests/users'
+import { searchUserSchema, userSignUpSchema } from '../validations/users'
 
 async function userRoutes(fastify: FastifyInstance): Promise<void> {
   fastify.post('/signup', { schema: userSignUpSchema }, signUpCtrl)

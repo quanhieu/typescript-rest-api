@@ -1,4 +1,3 @@
-import { Document } from 'mongoose'
 import { IUserDocument } from './users.types'
 
 async function setLastUpdated(): Promise<void> {
@@ -9,7 +8,7 @@ async function setLastUpdated(): Promise<void> {
   }
 }
 
-async function sameLastName(): Promise<Document[]> {
+async function sameLastName(): Promise<IUserDocument[]> {
   return this.model('users').find({ lastName: this.lastName })
 }
 
