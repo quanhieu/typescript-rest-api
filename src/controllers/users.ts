@@ -1,9 +1,12 @@
 import logger from '../utils/logger'
 
-import { apiResponse, IRequestData } from '../interfaces/api'
-import { ICreateUserRequestData } from '../interfaces/users'
+import { apiResponse } from '../interfaces/api'
+import {
+  ICreateUserRequestData,
+  ISearchUserRequestData,
+} from '../interfaces/users'
 
-import { createUser } from '../services/users'
+import { createUser, searchUser } from '../services/users'
 import { FastifyReply } from 'fastify'
 import { IUserDocument } from '../models/users/users.types'
 
@@ -30,20 +33,20 @@ async function signUpCtrl(
 }
 
 async function searchUserCtrl(
-  req: IRequestData,
+  req: ISearchUserRequestData,
   res: FastifyReply,
 ): Promise<apiResponse> {
   try {
-    // const { page, size, keyword } = req.body
-    // logger.info(req.body)
-    // const data: ISearchUserResult = await searchUser({
-    //   page,
-    //   size,
-    //   keyword,
-    // })
+    const { page, size, keyword } = req.body
+    logger.info(req.body)
+    const data: ISearchUserResult = await searchUser({
+      page,
+      size,
+      keyword,
+    })
     return {
       status: true,
-      // data,
+      data,
     }
   } catch (err) {
     res.code(400)

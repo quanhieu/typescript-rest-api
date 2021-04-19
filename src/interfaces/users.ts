@@ -33,6 +33,14 @@ export interface ISearchUser {
   keyword: string
 }
 
+export interface ISearchUserRequestData extends IRequestData {
+  body: {
+    page: number
+    size: number
+    keyword: string
+  }
+}
+
 export interface ISearchUserResult {
   total: number
   data: IESUser[]

@@ -17,7 +17,9 @@ interface SearchResponse<T> {
   _scroll_id?: string
   _shards: ShardsResponse
   hits: {
-    total: number
+    total: {
+      value: number
+    }
     max_score: number
     hits: Array<{
       _index: string

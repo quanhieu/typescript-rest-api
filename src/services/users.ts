@@ -22,8 +22,8 @@ async function createUser(inp: ICreateUser): Promise<IUserDocument> {
   return u
 }
 
-async function searchUser(inp: ISearchUser): Promise<ISearchUserResult> {
-  const { page, size, keyword } = inp
+async function searchUser(input: ISearchUser): Promise<ISearchUserResult> {
+  const { page, size, keyword } = input
   const resp = await es7.search<SearchResponse<IESUser>>({
     index: 'users',
     body: {
@@ -41,6 +41,11 @@ async function searchUser(inp: ISearchUser): Promise<ISearchUserResult> {
                     lastName: keyword,
                   },
                 },
+                {
+                  match: {
+                    email: keyword,
+                  },
+                },
               ]
             : [],
         },
@@ -51,11 +56,11 @@ async function searchUser(inp: ISearchUser): Promise<ISearchUserResult> {
   })
   const data = resp.body.hits.hits
   const users: IESUser[] = []
-  for (const u of data) {
-    users.push({ ...u._source, _score: u._score })
+  for (const user of data) {
+    users.push({ ...user._source, _score: user._score })
   }
   const result: ISearchUserResult = {
-    total: resp.body.hits.total,
+    total: resp.body.hits.total.value,
     data: users,
   }
   return result
