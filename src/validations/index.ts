@@ -10,6 +10,8 @@ const ajv = new Ajv({
     error: logger.error,
   },
   useDefaults: true,
+  coerceTypes: true,
+  allErrors: true,
 })
 
 addFormats(ajv)

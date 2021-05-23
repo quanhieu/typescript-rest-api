@@ -4,7 +4,7 @@ import { IUser } from '../../interfaces/users'
 
 interface IUserDocument extends IUser, Document {
   setLastUpdated: () => Promise<void>
-  sameLastName: () => Promise<Document[]>
+  sameLastName: () => Promise<IUserDocument[]>
   setFirstName: (firstName: string) => Promise<IUserDocument>
 }
 

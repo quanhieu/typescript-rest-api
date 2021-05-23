@@ -1,15 +1,6 @@
 import { FastifyRequest } from 'fastify'
 
-interface api200Response {
-  status: boolean
-  data: unknown
-}
-interface api400Response {
-  status: boolean
-  message: string
-}
-
-interface apiResponse {
+interface IApiResponse {
   status?: boolean
   message?: string
   data?: any
@@ -22,4 +13,4 @@ interface IRequestData extends FastifyRequest<IRequestData> {
   Headers: any
 }
 
-export { IRequestData, apiResponse, api200Response, api400Response }
+export { IRequestData, IApiResponse }

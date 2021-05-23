@@ -8,7 +8,7 @@ import {
   ISearchUserResult,
 } from '../interfaces/users'
 import es7 from '../infra/elasticsearch'
-import { SearchResponse } from '../interfaces/elasticsearch'
+import { IESSearchResponse } from '../interfaces/elasticsearch'
 import { IUserDocument } from '../models/users/users.types'
 
 async function createUser(inp: ICreateUser): Promise<IUserDocument> {
@@ -24,7 +24,7 @@ async function createUser(inp: ICreateUser): Promise<IUserDocument> {
 
 async function searchUser(input: ISearchUser): Promise<ISearchUserResult> {
   const { page, size, keyword } = input
-  const resp = await es7.search<SearchResponse<IESUser>>({
+  const resp = await es7.search<IESSearchResponse<IESUser>>({
     index: 'users',
     body: {
       query: {
