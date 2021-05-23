@@ -1,11 +1,6 @@
 import { IRequestData } from './api'
-export interface ICreateUser {
-  email: string
-  password: string
-  firstName?: string
-  lastName?: string
-}
 
+// API REQUEST INTERFACE
 export interface ICreateUserRequestData extends IRequestData {
   body: {
     email: string
@@ -13,11 +8,15 @@ export interface ICreateUserRequestData extends IRequestData {
   }
 }
 
-export interface IUserToken {
-  idToken?: string
-  refreshToken?: string
+export interface ISearchUserRequestData extends IRequestData {
+  body: {
+    page: number
+    size: number
+    keyword: string
+  }
 }
 
+// MODEL USER INTERFACE
 export interface IUser {
   email: string
   firstName: string
@@ -27,18 +26,23 @@ export interface IUser {
   lastUpdated?: Date
 }
 
+export interface ICreateUser {
+  email: string
+  password: string
+  firstName?: string
+  lastName?: string
+}
+
+export interface IUserToken {
+  idToken?: string
+  refreshToken?: string
+}
+
+// ELASTICSEARCH QUERY INTERFACE
 export interface ISearchUser {
   page: number
   size: number
   keyword: string
-}
-
-export interface ISearchUserRequestData extends IRequestData {
-  body: {
-    page: number
-    size: number
-    keyword: string
-  }
 }
 
 export interface ISearchUserResult {
